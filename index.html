@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Circle</title>
+    <style>
+        :root {
+            --bg: #050210;
+            --gradient: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+        }
+
+        body {
+            background-color: var(--bg);
+        }
+
+        #outer-circle {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 200px;
+            left: 376px;
+            border-radius: 50%;
+            background: var(--gradient);
+            animation: rotatation 2s linear infinite;
+        }
+
+        #inner-circle-1 {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            border-radius: 50%;
+            background: var(--bg);
+            transform: scale(0.9);
+            filter: brightness(1.5);
+            
+        }
+        #inner-circle-2 {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            border-radius: 50%;
+            background: var(--bg);
+            transform: scale(0.9);
+            filter: brightness(2.5);
+            animation: shrinking 0.9s linear infinite;
+            animation-direction: reverse;
+        }
+        
+
+        #outer-circle::before {
+            content:'';
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gradient);
+            transform: scale(1);
+            filter: opacity(0.3);
+            filter: blur(50px);
+        }
+
+
+        @keyframes rotatation {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(90deg);
+            }
+            50% {
+                transform: rotate(180deg); 
+            }
+            75% {
+                transform: rotate(270deg); 
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes shrinking {
+            0% {
+                filter: scale(1);
+            }
+            25% {
+                transform: scale(0.8);
+            }
+            50% {
+                transform: scale(0.6);
+            }
+            75% {
+                transform: scale(0.4);
+            }
+            100% {
+                transform: scale(0.2);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer-circle">
+        <div id="inner-circle-1"></div>
+        <div id="inner-circle-2"></div>
+    </div>
+</body>
+
+</html>
